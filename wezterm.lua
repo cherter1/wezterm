@@ -22,10 +22,10 @@ end
 
 -- Color scheme, Wezterm has 100s of them you can see here:
 -- https://wezfurlong.org/wezterm/colorschemes/index.html
-config.color_scheme = 'Oceanic Next (Gogh)'
+config.color_scheme = 'Catppuccin Mocha (Gogh)'
 -- This is my chosen font, we will get into installing fonts on windows later
 config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
-config.font_size = 11
+config.font_size = 13
 config.launch_menu = launch_menu
 -- makes my cursor blink 
 config.default_cursor_style = 'BlinkingBar'
@@ -40,19 +40,19 @@ mouse_bindings = {
     action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
     mods = 'NONE',
   },
- {
-  event = { Down = { streak = 1, button = "Right" } },
-  mods = "NONE",
-  action = wezterm.action_callback(function(window, pane)
-   local has_selection = window:get_selection_text_for_pane(pane) ~= ""
-   if has_selection then
-    window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
-    window:perform_action(act.ClearSelection, pane)
-   else
-    window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
-   end
-  end),
- },
+  {
+    event = { Down = { streak = 1, button = "Right" } },
+    mods = "NONE",
+    action = wezterm.action_callback(function(window, pane)
+      local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+      if has_selection then
+        window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
+        window:perform_action(act.ClearSelection, pane)
+      else
+        window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
+      end
+    end),
+  },
 }
 
 -- This is used to make my foreground (text, etc) brighter than my background
@@ -63,17 +63,17 @@ config.foreground_text_hsb = {
 }
 
 -- This is used to set an image as my background 
-local terminalBackgroundFilePath = 'C:\\Users\\mmand\\Pictures\\dark-souls-2-1080p.jpg'
+local terminalBackgroundFilePath = 'C:/Users/mmand/Pictures/dark-souls-3-1080p.jpg'
 config.background = {
-    {
-        source = { File = {path = terminalBackgroundFilePath, speed = 0.2}},
- opacity = 1,
- width = "100%",
- hsb = {brightness = 0.3},
-    }
+  {
+    source = { File = {path = terminalBackgroundFilePath, speed = 0.2}},
+    opacity = 1,
+    width = "100%",
+    hsb = {brightness = 0.3},
+  }
 }
 
 -- IMPORTANT: Sets WSL2 UBUNTU-22.04 as the defualt when opening Wezterm
---config.default_domain = 'WSL:Ubuntu-22.04'
+--config.default_domain = 'powershell.exe'
 
 return config
