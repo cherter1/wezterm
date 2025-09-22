@@ -39,13 +39,15 @@ config.window_frame = {
 config.disable_default_key_bindings = true
 config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 2000 }
 
+local reloadConfig = { key = 'R', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration }
+
 config.keys = {
-  { key = 'l', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(1) },
-  { key = 'h', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(-1) },
-  { key = 'j', mods = 'CMD', action = act.ActivatePaneDirection 'Down', },
-  { key = 'k', mods = 'CMD', action = act.ActivatePaneDirection 'Up', },
-  { key = 'Enter', mods = 'CMD', action = act.ActivateCopyMode },
   { key = 'R', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration },
+  { key = 'l', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
+  { key = 'h', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
+  { key = 'j', mods = 'CTRL', action = act.ActivatePaneDirection 'Down', },
+  { key = 'k', mods = 'CTRL', action = act.ActivatePaneDirection 'Up', },
+  { key = 'Enter', mods = 'CTRL', action = act.ActivateCopyMode },
   { key = '+', mods = 'CTRL', action = act.IncreaseFontSize },
   { key = '-', mods = 'CTRL', action = act.DecreaseFontSize },
   { key = '0', mods = 'CTRL', action = act.ResetFontSize },
@@ -58,16 +60,16 @@ config.keys = {
   { key = 'RightArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Right' },
   { key = 'UpArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Up' },
   { key = 'DownArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Down' },
-  { key = 'f', mods = 'CMD', action = act.SplitVertical { domain = 'CurrentPaneDomain' }, },
-  { key = 'd', mods = 'CMD', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
-  { key = 'h', mods = 'CMD', action = act.ActivatePaneDirection 'Left', },
-  { key = 'l', mods = 'CMD', action = act.ActivatePaneDirection 'Right', },
-  { key = 't', mods = 'CMD', action = act.SpawnTab 'CurrentPaneDomain' },
-  { key = 'w', mods = 'CMD', action = act.CloseCurrentTab{ confirm = false } },
-  { key = 'x', mods = 'CMD', action = act.CloseCurrentPane{ confirm = false } },
+  { key = 'f', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' }, },
+  { key = 'd', mods = 'LEADER|CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }, },
+  { key = 'h', mods = 'CTRL', action = act.ActivatePaneDirection 'Left', },
+  { key = 'l', mods = 'CTRL', action = act.ActivatePaneDirection 'Right', },
+  { key = 't', mods = 'CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
+  { key = 'w', mods = 'CTRL', action = act.CloseCurrentTab{ confirm = false } },
+  { key = 'x', mods = 'CTRL', action = act.CloseCurrentPane{ confirm = false } },
   { key = 'b', mods = 'LEADER|CTRL', action = act.SendString '\x02', },
   { key = 'Enter', mods = 'LEADER', action = act.ActivateCopyMode, },
-  { key = 'p', mods = 'LEADER', action = act.PasteFrom("Clipboard"), },
+  { key = 'v', mods = 'CTRL|SHIFT', action = act.PasteFrom("Clipboard"), },
 --  { key = 'k', mods = 'CTRL|ALT', action = act.Multiple,
 --    {
 --      act.ClearScrollback 'ScrollbackAndViewport',
@@ -106,17 +108,6 @@ config.foreground_text_hsb = {
   brightness = 1.8,
 }
 
-local terminalBackgroundFilePath = 'C:/Users/mmand/Pictures/dark-souls-3-1080p.jpg'
-config.background = {
-  {
-    source = { File = {path = terminalBackgroundFilePath, speed = 0.2}},
-    opacity = 1,
-    width = "100%",
-    hsb = {brightness = 0.3},
-  }
-}
-
---config.default_domain = 'powershell.exe'
---config.default_prog = { 'powershell' }
+config.default_domain = 'WSL:Ubuntu-24.04'
 
 return config
