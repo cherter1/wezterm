@@ -29,7 +29,8 @@ config.use_dead_keys = false
 config.scrollback_lines = 5000
 
 config.adjust_window_size_when_changing_font_size = false
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
+
 --config.window_frame = {
 --  font = wezterm.font { family = 'Noto Sans', weight = 'Regular' },
 --}
@@ -40,7 +41,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.disable_default_key_bindings = true
 config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 2000 }
 
-local reloadConfig = { key = 'R', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration }
 
 config.keys = {
   { key = 'R', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration },
@@ -54,7 +54,7 @@ config.keys = {
   { key = '0', mods = 'CTRL', action = act.ResetFontSize },
   { key = 'C', mods = 'SHIFT|CTRL', action = act.CopyTo 'Clipboard' },
   { key = 'N', mods = 'SHIFT|CTRL', action = act.SpawnWindow },
-  { key = 'U', mods = 'SHIFT|CTRL', action = act.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
+  { key = 'U', mods = 'SHIFT|CTRL', action = act.CharSelect{ copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
   { key = 'PageUp', mods = 'CTRL', action = act.ActivateTabRelative(-1) },
   { key = 'PageDown', mods = 'CTRL', action = act.ActivateTabRelative(1) },
   { key = 'LeftArrow', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Left' },
@@ -108,8 +108,13 @@ mouse_bindings = {
 --   saturation = 1.5,
 --   brightness = 1.8,
 -- }
+config.max_fps = 120
 
 --config.default_domain = 'WSL:Ubuntu-24.04'
+
 config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' }
+
+local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+bar.apply_to_config(config, {})
 
 return config
