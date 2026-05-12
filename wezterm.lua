@@ -12,26 +12,27 @@ local keys = {}
 local mouse_bindings = {}
 local launch_menu = {}
 
-config.window_decorations = 'RESIZE'
+config.window_decorations = 'TITLE | RESIZE'
 
 config.inactive_pane_hsb = {
   saturation = 0.8,
   brightness = 0.7
 }
 
-config.color_scheme = 'Catppuccin Mocha (Gogh)'
+config.color_scheme = 'Catppuccin Macchiato (Gogh)'
 config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
-config.font_size = 14
+config.font_size = 12
 config.line_height = 1.2
+config.cell_width = 1.0
 
 config.use_dead_keys = false
 config.scrollback_lines = 5000
 
 config.adjust_window_size_when_changing_font_size = false
 config.hide_tab_bar_if_only_one_tab = true
-config.window_frame = {
-  font = wezterm.font { family = 'Noto Sans', weight = 'Regular' },
-}
+--config.window_frame = {
+--  font = wezterm.font { family = 'Noto Sans', weight = 'Regular' },
+--}
 
 --config.launch_menu = launch_menu
 
@@ -102,12 +103,13 @@ mouse_bindings = {
   },
 }
 
-config.foreground_text_hsb = {
-  hue = 1.0,
-  saturation = 1.5,
-  brightness = 1.8,
-}
+-- config.foreground_text_hsb = {
+--   hue = 1.0,
+--   saturation = 1.5,
+--   brightness = 1.8,
+-- }
 
-config.default_domain = 'WSL:Ubuntu-24.04'
+--config.default_domain = 'WSL:Ubuntu-24.04'
+config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' }
 
 return config
