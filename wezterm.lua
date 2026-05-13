@@ -115,6 +115,12 @@ config.max_fps = 120
 config.default_prog = { 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' }
 
 local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
-bar.apply_to_config(config, {})
+bar.apply_to_config(config, {
+    modules = {
+        hostname = {
+            enabled = false
+        }
+    }
+})
 
 return config
